@@ -8,15 +8,20 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class JuecesComponent {
+
+  information: any = {};
   dimensions: any[] = [];
-  surveyName: string = "";
+  items: any[] = [];
+  fit: any[] = [];
   
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.http.get<any>('assets/survey.json').subscribe(data => {
-      this.surveyName = data['information']['name'];
+      this.information = data['information'];
       this.dimensions = data['dimensions'];
+      this.items = data['items'];
+      this.fit = data['fit'];
     });
   }
 }

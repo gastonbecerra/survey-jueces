@@ -1,8 +1,31 @@
-<h1>{{ information?.name }}</h1>
+<ng-container *ngIf="surveyForm">
+    <form [formGroup]="surveyForm" (ngSubmit)="submitSurveyForm()">
+      <div formArrayName="items">
+        <div *ngFor="let itemGroup of getItemsFormArray()?.controls; let i = index" [formGroupName]="i">
+          
+          <h3>Item: {{ items[i] }}</h3>
 
-<ul>
-  <li *ngFor="let dimension of dimensions">
-    <h2>{{ dimension.nombre }}</h2>
-    <p>{{ dimension.descripcion }}</p>
-  </li>
-</ul>
+          <!-- <input type="hidden" formControlName="item" [value]="items[i]"> -->
+
+          <div>
+            <label>Dimension:</label>
+            <select formControlName="dimension" required>
+              <option *ngFor="let dimension of dimensions" [value]="dimension.dimension">{{ dimension.nombre }}</option>
+            </select>
+          </div>
+          <div>
+            <label>Fit:</label>
+            <select formControlName="fit" required>
+              <option *ngFor="let fitOption of fit" [value]="fitOption">{{ fitOption }}</option>
+            </select>
+          </div>
+          <div>
+            <label>Comentario:</label>
+            <textarea formControlName="comentario" rows="2" cols="50"></textarea>
+          </div>
+        </div>
+      </div>
+      <button type="submit">Enviar</button>
+    </form>
+  </ng-container>
+  

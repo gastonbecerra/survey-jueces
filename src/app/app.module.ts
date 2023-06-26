@@ -6,15 +6,21 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { JuecesComponent } from './jueces/jueces.component';
 
+// import { AngularFireModule } from '@angular/fire/compat';
+// import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+// import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
     JuecesComponent
   ],
   imports: [
+    // AngularFireModule.initializeApp(environment.firebase),
+    // AngularFirestoreModule,
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { JuecesComponent } from './jueces/jueces.component';
 
 import { firebaseConfig } from '../../firebase.config';
+import { initializeApp } from 'firebase/app';
+
+initializeApp(firebaseConfig);
 
 @NgModule({
   declarations: [
@@ -14,7 +17,7 @@ import { firebaseConfig } from '../../firebase.config';
     JuecesComponent
   ],
   imports: [
-    // AngularFireModule.initializeApp(environment.firebase),
+    // AngularFireModule.initializeApp(firebaseConfig),
     // AngularFirestoreModule,
     BrowserModule,
     HttpClientModule,

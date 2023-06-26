@@ -1,0 +1,39 @@
+{    
+    "information": {
+        "name": "My Survey",
+        "instructions": "xxx"
+    },
+
+    "dimensions": [
+        {
+            "dimension": "dim1",
+            "nombre": "Independiente",
+            "descripcion": "Son educandos que se caracterizan por estudiar solos a su propio ritmo. Les gusta pensar por sí mismos y confían en su capacidad de aprendizaje. Prefieren aprender el contenido que consideran que es importante. Son estudiantes seguros de sí mismos, que no tienen necesidad de consultar con los demás.  Características sobresalientes: Estudio independiente, trabajo solo, estudiar al propio ritmo, tareas que permiten pensar de forma independiente, tareas que impliquen el diseño de proyectos, cursos centrados en el estudiante antes que en el profesor."
+        }, 
+
+        {
+            "dimension": "dim2",
+            "nombre": "Dependiente",
+            "descripcion": "Estos estudiantes dependen tanto del profesor, como de sus compañeros para orientarse en el estudio. Prefieren una figura de autoridad que les indique que hacer. Muestran poca curiosidad intelectual y aprenden solo lo que es requerido por el profesor. Características sobresalientes: Dependencia en el estudio de notas o resúmenes de compañeros y profesores, tareas con instrucciones y fechas de entrega claras, métodos de enseñanza centrados en el profesor, menor ambigüedad posible en todos los aspectos del curso."
+        }
+    ],
+
+    "items": [
+        "Los profesores son las personas más capacitadas para determinar qué es lo que debo saber en una materia.",
+        "Trato de participar tanto como sea posible en todas las actividades de una materia.",
+        "Los estudiantes aprendemos más cuando compartimos nuestras ideas con otros.",
+        "La mayor parte de lo que sé la aprendí por mi cuenta.",
+        "Los estudiantes perdemos chances de obtener buenas notas si compartimos apuntes e ideas.",
+        "Los resúmenes y comentarios que el profesor escribe en el pizarrón me resultan muy útiles.",
+        "En la mayoría de las materias estudio para aprobar."
+    ],
+
+    "fit": [
+        "Nada",
+        "Poco",
+        "Medio",
+        "Bastante",
+        "Totalmente"
+    ]   
+    
+}   

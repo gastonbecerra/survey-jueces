@@ -15,43 +15,41 @@ export class JuecesComponent {
   dimensions: any[] = [];
   items: any[] = [];
   fit: any[] = [];
-
   surveyForm!: FormGroup; 
+  nombreForm: FormControl;
   results: any[] = [];
   
   constructor(
     private http: HttpClient, 
     private formBuilder: FormBuilder
-  ) {}
+    ) {
+      this.nombreForm = this.formBuilder.control('');
+    }
+    
+    getItemsFormArray(): FormArray | null {
+      return this.surveyForm.get('items') as FormArray | null;
+    }
 
-  getItemsFormArray(): FormArray | null {
-    return this.surveyForm.get('items') as FormArray | null;
-  }
-
-  submitSurveyForm() {
-    const itemsFormArray = this.getItemsFormArray();
-  
-    if (itemsFormArray) {
-
-      // Verificar si hay campos obligatorios sin completar
-      if (itemsFormArray.invalid) {
-        // console.log('invalidos');
-        itemsFormArray.markAllAsTouched();
-        return; 
+    submitSurveyForm() {
+      if (this.surveyForm.invalid) {
+        console.log('FORMULARIO INVALIDO');
+        this.surveyForm.markAllAsTouched();
+        return;
       }
-  
+    
       const formData = {
-        items: itemsFormArray.value.map((itemGroup: any) => ({
+        items: this.getItemsFormArray()?.value.map((itemGroup: any) => ({
           item: itemGroup.item,
           dimension: itemGroup.dimension,
           fit: itemGroup.fit,
           comentario: itemGroup.comentario
-        }))
+        })),
+        nombre: this.nombreForm.value
       };
-  
       console.log(formData);
     }
-  }
+    
+
   
   ngOnInit() {
     this.http.get<any>('assets/survey.json').subscribe(data => {
@@ -62,16 +60,17 @@ export class JuecesComponent {
       this.fit = data['fit'];
   
       this.surveyForm = this.formBuilder.group({
-        items: this.formBuilder.array([]) // Array de items
+        items: this.formBuilder.array([]), 
+        nombre: this.nombreForm
       });
-  
+      
       const itemsFormArray = this.getItemsFormArray();
 
       this.items.forEach(item => {
         const itemGroup = this.formBuilder.group({
           item: [item], 
           dimension: ['', Validators.required],
-          fit: ['', Validators.required],
+          fit: [this.fit[ this.fit.length - 1 ], Validators.required],
           comentario: ''
         });
         (itemsFormArray?.push(itemGroup));

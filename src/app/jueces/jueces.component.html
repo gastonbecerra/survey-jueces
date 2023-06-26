@@ -9,34 +9,48 @@
 
           <div>
             <label>Dimension:</label>
-            <select formControlName="dimension" required>
-              <option *ngFor="let dimension of dimensions" [value]="dimension.dimension">{{ dimension.nombre }}</option>
-            </select>      
+            <select formControlName="dimension" 
+                required>
+                <option *ngFor="let dimension of dimensions" 
+                    [value]="dimension.dimension">{{ dimension.nombre }}</option>
+              </select>     
             <div *ngIf="itemGroup.get('dimension')?.touched && 
                 itemGroup.get('dimension')?.errors?.['required']" 
                 class="error-message">
                 Dimension es obligatoria.
               </div>    
           </div>
+
           <div>
             <label>Fit:</label>
-            <select formControlName="fit" required>
-              <option *ngFor="let fitOption of fit" [value]="fitOption">{{ fitOption }}</option>
-            </select>
-            <div *ngIf="itemGroup.get('fit')?.touched && 
-                itemGroup.get('fit')?.errors?.['required']" 
-                class="error-message">
-                El fit es obligatorio.
-              </div>    
-
+            <div>
+              <ng-container *ngFor="let fitOption of fit; let i = index">
+                <input type="radio" formControlName="fit" [value]="fitOption">
+                <label>{{ fitOption }}</label>
+              </ng-container>
+            </div>
+            <div *ngIf="surveyForm.get('fit')?.touched && 
+                surveyForm.get('fit')?.errors?.['required']" class="error-message">
+              El fit es obligatorio.
+            </div>
           </div>
+          
+
           <div>
             <label>Comentario:</label>
             <textarea formControlName="comentario" rows="2" cols="50"></textarea>
           </div>
+
         </div>
       </div>
-      <button type="submit">Enviar</button>
+      <div>
+        <div>
+            <label>Nombre:</label>
+            <input type="text" [formControl]="nombreForm">
+          </div>
+        <button type="submit">Enviar</button>
+    </div>    
+
     </form>
   </ng-container>
   

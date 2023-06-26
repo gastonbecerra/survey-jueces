@@ -5,19 +5,30 @@
           
           <h3>Item: {{ items[i] }}</h3>
 
-          <!-- <input type="hidden" formControlName="item" [value]="items[i]"> -->
+          <input type="hidden" formControlName="item" [value]="items[i]">
 
           <div>
             <label>Dimension:</label>
             <select formControlName="dimension" required>
               <option *ngFor="let dimension of dimensions" [value]="dimension.dimension">{{ dimension.nombre }}</option>
-            </select>
+            </select>      
+            <div *ngIf="itemGroup.get('dimension')?.touched && 
+                itemGroup.get('dimension')?.errors?.['required']" 
+                class="error-message">
+                Dimension es obligatoria.
+              </div>    
           </div>
           <div>
             <label>Fit:</label>
             <select formControlName="fit" required>
               <option *ngFor="let fitOption of fit" [value]="fitOption">{{ fitOption }}</option>
             </select>
+            <div *ngIf="itemGroup.get('fit')?.touched && 
+                itemGroup.get('fit')?.errors?.['required']" 
+                class="error-message">
+                El fit es obligatorio.
+              </div>    
+
           </div>
           <div>
             <label>Comentario:</label>

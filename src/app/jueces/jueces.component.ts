@@ -32,14 +32,27 @@ export class JuecesComponent {
     const itemsFormArray = this.getItemsFormArray();
   
     if (itemsFormArray) {
+
+      // Verificar si hay campos obligatorios sin completar
+      if (itemsFormArray.invalid) {
+        // console.log('invalidos');
+        itemsFormArray.markAllAsTouched();
+        return; 
+      }
+  
       const formData = {
-        items: itemsFormArray.value
+        items: itemsFormArray.value.map((itemGroup: any) => ({
+          item: itemGroup.item,
+          dimension: itemGroup.dimension,
+          fit: itemGroup.fit,
+          comentario: itemGroup.comentario
+        }))
       };
   
       console.log(formData);
     }
   }
-
+  
   ngOnInit() {
     this.http.get<any>('assets/survey.json').subscribe(data => {
   
@@ -55,9 +68,6 @@ export class JuecesComponent {
       const itemsFormArray = this.getItemsFormArray();
 
       this.items.forEach(item => {
-
-        console.log(item);
-
         const itemGroup = this.formBuilder.group({
           item: [item], 
           dimension: ['', Validators.required],

@@ -20,6 +20,8 @@ export class JuecesComponent {
   results: any[] = [];
   
   constructor(
+    // private afFirestore: AngularFirestore, 
+    // private afDatabase: AngularFireDatabase,
     private http: HttpClient, 
     private formBuilder: FormBuilder
     ) {
@@ -31,6 +33,7 @@ export class JuecesComponent {
     }
 
     submitSurveyForm() {
+
       if (this.surveyForm.invalid) {
         console.log('FORMULARIO INVALIDO');
         this.surveyForm.markAllAsTouched();
@@ -46,11 +49,20 @@ export class JuecesComponent {
         })),
         nombre: this.nombreForm.value
       };
+
       console.log(formData);
+    
+      // Guardar los datos en Firestore Database
+      // this.afFirestore.collection('survey').add(formData)
+      //   .then(() => {
+      //     console.log('Datos guardados en Firestore');
+      //   })
+      //   .catch(error => {
+      //     console.log('Error al guardar los datos en Firestore:', error);
+      //   });
     }
     
 
-  
   ngOnInit() {
     this.http.get<any>('assets/survey.json').subscribe(data => {
   
@@ -79,5 +91,4 @@ export class JuecesComponent {
     });
   }
   
-
 }

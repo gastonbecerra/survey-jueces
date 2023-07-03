@@ -7,9 +7,14 @@ import { AppComponent } from './app.component';
 import { JuecesComponent } from './jueces/jueces.component';
 
 import { firebaseConfig } from '../../firebase.config';
-import { initializeApp } from 'firebase/app';
 
-initializeApp(firebaseConfig);
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+
+// import { initializeApp } from 'firebase/app';
+// import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+// import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+// initializeApp(firebaseConfig);
 
 @NgModule({
   declarations: [
@@ -17,8 +22,10 @@ initializeApp(firebaseConfig);
     JuecesComponent
   ],
   imports: [
-    // AngularFireModule.initializeApp(firebaseConfig),
-    // AngularFirestoreModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
+    // AngularFireDatabaseModule,
+    // AngularFireAuthModule, // **2do: para que estoy usando auth?
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,

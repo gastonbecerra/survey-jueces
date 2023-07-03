@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 @Component({
   selector: 'app-jueces',
   templateUrl: './jueces.component.html',
@@ -20,8 +22,7 @@ export class JuecesComponent {
   results: any[] = [];
   
   constructor(
-    // private afFirestore: AngularFirestore, 
-    // private afDatabase: AngularFireDatabase,
+    private firestore: AngularFirestore,
     private http: HttpClient, 
     private formBuilder: FormBuilder
     ) {
@@ -51,6 +52,11 @@ export class JuecesComponent {
       };
 
       console.log(formData);
+
+      // const data = { message: 'Hola, Firestore!' };
+      this.firestore.collection('interjueces').add(formData)
+        .then(() => console.log('Datos guardados en Firestore'))
+        .catch(error => console.error('Error al guardar datos en Firestore', error));
     
       // Guardar los datos en Firestore Database
       // this.afFirestore.collection('survey').add(formData)
@@ -92,3 +98,4 @@ export class JuecesComponent {
   }
   
 }
+

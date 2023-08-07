@@ -3,6 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatIconModule } from '@angular/material/icon';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatToolbarModule } from '@angular/material/toolbar'; 
+import { MatCardModule } from '@angular/material/card';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 import { AppComponent } from './app.component';
 import { JuecesComponent } from './jueces/jueces.component';
 
@@ -21,8 +33,18 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatRadioModule,
+    MatIconModule,
+    MatStepperModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [ provideAnimations() ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

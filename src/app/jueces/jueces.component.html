@@ -1,14 +1,40 @@
-<div>
-  {{ information.name }}
-  {{ information.instructions }}
-</div>
+<mat-toolbar color="primary">
+  <span>{{ information.name }}</span>
+</mat-toolbar>
 
-<ng-container *ngIf="surveyForm">
+<mat-stepper #stepper>
+
+<mat-step label="Instrucciones">
+  <div>
+    {{ information.instructions }}
+  </div>
+  <div>
+    <button mat-raised-button color="accent" matStepperNext>Ver dimensiones</button>
+  </div>
+</mat-step>
+
+<mat-step label="Dimensiones">
+  <div>
+    <mat-card class="example-card" 
+      *ngFor="let dim of dimensions; let i = index">
+      <mat-card-header>
+        <mat-card-title>Dimensión: {{ dim.nombre }}</mat-card-title>
+        <mat-card-subtitle>{{ dim.dimension }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ dim.descripcion }}</p>
+      </mat-card-content>
+    </mat-card>
+    <div>&nbsp;</div>
+    </div>
+    <div>
+      <button mat-raised-button color="accent" matStepperNext>Ver items</button>
+    </div>    
+</mat-step>  
+
+<mat-step label="Items">
+  <ng-container *ngIf="surveyForm">
     <form [formGroup]="surveyForm" (ngSubmit)="submitSurveyForm()">
-      <div>
-        <label>Nombre:</label>
-        <input type="text" [formControl]="nombreForm">
-      </div>
 
       <div formArrayName="items">
         <div *ngFor="let itemGroup of getItemsFormArray()?.controls; let i = index" [formGroupName]="i">
@@ -18,12 +44,15 @@
           <input type="hidden" formControlName="item" [value]="items[i]">
 
           <div>
-            <label>Dimension:</label>
-            <select formControlName="dimension" 
-                required>
-                <option *ngFor="let dimension of dimensions" 
-                    [value]="dimension.dimension">{{ dimension.nombre }}</option>
-              </select>     
+            <mat-form-field appearance="fill">
+              <mat-label>Dimension</mat-label>
+              <mat-select formControlName="dimension" required>
+                <mat-option *ngFor="let dimension of dimensions" [value]="dimension.dimension">
+                  {{ dimension.nombre }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            
             <div *ngIf="itemGroup.get('dimension')?.touched && 
                 itemGroup.get('dimension')?.errors?.['required']" 
                 class="error-message">
@@ -33,29 +62,45 @@
 
           <div>
             <label>Fit:</label>
-            <div>
-              <ng-container *ngFor="let fitOption of fit; let i = index">
-                <input type="radio" formControlName="fit" [value]="fitOption">
-                <label>{{ fitOption }}</label>
-              </ng-container>
-            </div>
-            <div *ngIf="surveyForm.get('fit')?.touched && 
-                surveyForm.get('fit')?.errors?.['required']" class="error-message">
+            <!-- Reemplazar div con mat-radio-group -->
+            <mat-radio-group formControlName="fit" required>
+              <div *ngFor="let fitOption of fit; let i = index">
+                <mat-radio-button [value]="fitOption">{{ fitOption }}</mat-radio-button>
+              </div>
+            </mat-radio-group>
+            <div *ngIf="surveyForm.get('fit')?.touched && surveyForm.get('fit')?.errors?.['required']" class="error-message">
               El fit es obligatorio.
             </div>
           </div>
-          
 
           <div>
-            <label>Comentario:</label>
-            <textarea formControlName="comentario" rows="2" cols="50"></textarea>
+            <mat-form-field appearance="fill">
+              <mat-label>Algún comentario?</mat-label>
+              <textarea matInput formControlName="comentario" rows="2" cols="50"></textarea>
+            </mat-form-field>
           </div>
-
+          
         </div>
       </div>
       <div>
-        <button type="submit">Enviar</button>
-    </div>    
 
+        <div>
+          <label>Nombre del Juez:</label>
+          <mat-form-field appearance="fill">
+            <mat-label>Nombre del Juez</mat-label>
+            <input matInput [formControl]="nombreForm" required>
+          </mat-form-field>  
+        </div>  
+
+        <button type="submit"
+          [disabled]="!surveyForm.valid"
+          mat-raised-button color="primary">
+          {{ surveyForm.valid ? 'Enviar' : 'Formulario incompleto' }}
+        </button>
+    </div>    
     </form>
   </ng-container>
+
+</mat-step>
+
+</mat-stepper>

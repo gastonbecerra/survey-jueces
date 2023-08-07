@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
@@ -24,7 +25,8 @@ export class JuecesComponent {
   constructor(
     private firestore: AngularFirestore,
     private http: HttpClient, 
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar
     ) {
       this.nombreForm = this.formBuilder.control('');
     }
@@ -55,11 +57,18 @@ export class JuecesComponent {
 
       this.firestore.collection('interjueces').add(formData)
         .then(() => console.log('Datos guardados en Firestore'))
+        .then(() =>
+          this.snackBar.open('¡Gracias por participar!', 'Cerrar', {
+            duration: 9000, 
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom'
+          })
+        )
         .catch(error => console.error('Error al guardar datos en Firestore', error));    
-    }  
+    } 
 
-  ngOnInit() {
-    this.http.get<any>('assets/survey.json').subscribe(data => {
+    ngOnInit() {
+      this.http.get<any>('assets/survey.json').subscribe(data => {
   
       this.information = data['information'];
       this.dimensions = data['dimensions'];

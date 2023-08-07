@@ -1,5 +1,15 @@
+<div>
+  {{ information.name }}
+  {{ information.instructions }}
+</div>
+
 <ng-container *ngIf="surveyForm">
     <form [formGroup]="surveyForm" (ngSubmit)="submitSurveyForm()">
+      <div>
+        <label>Nombre:</label>
+        <input type="text" [formControl]="nombreForm">
+      </div>
+
       <div formArrayName="items">
         <div *ngFor="let itemGroup of getItemsFormArray()?.controls; let i = index" [formGroupName]="i">
           
@@ -44,13 +54,8 @@
         </div>
       </div>
       <div>
-        <div>
-            <label>Nombre:</label>
-            <input type="text" [formControl]="nombreForm">
-          </div>
         <button type="submit">Enviar</button>
     </div>    
 
     </form>
   </ng-container>
-  

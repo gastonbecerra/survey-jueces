@@ -53,21 +53,10 @@ export class JuecesComponent {
 
       console.log(formData);
 
-      // const data = { message: 'Hola, Firestore!' };
       this.firestore.collection('interjueces').add(formData)
         .then(() => console.log('Datos guardados en Firestore'))
-        .catch(error => console.error('Error al guardar datos en Firestore', error));
-    
-      // Guardar los datos en Firestore Database
-      // this.afFirestore.collection('survey').add(formData)
-      //   .then(() => {
-      //     console.log('Datos guardados en Firestore');
-      //   })
-      //   .catch(error => {
-      //     console.log('Error al guardar los datos en Firestore:', error);
-      //   });
-    }
-    
+        .catch(error => console.error('Error al guardar datos en Firestore', error));    
+    }  
 
   ngOnInit() {
     this.http.get<any>('assets/survey.json').subscribe(data => {

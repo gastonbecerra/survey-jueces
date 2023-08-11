@@ -1,12 +1,22 @@
 <mat-toolbar color="primary">
-  <span>{{ information.name }}</span>
+  <span>Juicio Experto - {{ information.name }}</span>
 </mat-toolbar>
 
 <mat-stepper #stepper>
 
-<mat-step label="Instrucciones">
+<mat-step label="Bienvenida">
   <div>
-    {{ information.instructions }}
+    <h2>Juicio Experto</h2>
+    <p>Estimado colega:</p>
+    <p>Ud. ha sido convocado como juez experto en virtud de su pericia en el tema y el enfoque.</p>
+    <p>El objetivo de este formulario es <strong>evaluar la adecuación de los items de la(s) escala(s) que estamos generando a las dimensiones que proponemos</strong>.</p>
+    <p>En la página siguiente Ud. encontrará una breve introducción sobre la(s) escala(s), y un listado de sus dimensiones explicadas. Ud. puede volver a consultar esta página todas las veces que desee.</p>
+    <p>Luego, verá una página con los distintos items de la(s) escala(s). 
+      Allí <strong>deberá asignar cada item a 1 dimensión</strong>, y aclarar el nivel de adecuación (nada-totalmente).
+      También podrá incluir un mensaje para el equipo de investigación, para compartir sus apreciaciones sobre el item, su redacción, o su relación con las dimensiones.</p>
+    <p>¡Agradecemos de antemano su ayuda la cual resultará de suma importancia para nuestra investigación!</p>
+    <p>Puede dirigir sus consultas a {{ information.mail }}</p>
+    <p>&nbsp;</p>
   </div>
   <div>
     <button mat-raised-button color="accent" matStepperNext>Ver dimensiones</button>
@@ -14,6 +24,10 @@
 </mat-step>
 
 <mat-step label="Dimensiones">
+  <h2>Sobre la(s) escala(s): {{ information.name }}</h2>
+  <p>{{information.about}}</p>
+  <p>&nbsp;</p>
+  <h3>Dimensiones</h3>
   <div>
     <mat-card class="example-card" 
       *ngFor="let dim of dimensions; let i = index">
@@ -61,21 +75,20 @@
           </div>
 
           <div>
-            <label>Fit:</label>
-            <!-- Reemplazar div con mat-radio-group -->
+            <label>Adecuación:</label>
             <mat-radio-group formControlName="fit" required>
               <div *ngFor="let fitOption of fit; let i = index">
                 <mat-radio-button [value]="fitOption">{{ fitOption }}</mat-radio-button>
               </div>
             </mat-radio-group>
             <div *ngIf="surveyForm.get('fit')?.touched && surveyForm.get('fit')?.errors?.['required']" class="error-message">
-              El fit es obligatorio.
+              La adecuación es obligatoria.
             </div>
           </div>
 
           <div>
             <mat-form-field appearance="fill">
-              <mat-label>Algún comentario?</mat-label>
+              <mat-label>Algún comentario sobre este item?</mat-label>
               <textarea matInput formControlName="comentario" rows="2" cols="50"></textarea>
             </mat-form-field>
           </div>

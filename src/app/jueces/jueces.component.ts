@@ -74,7 +74,7 @@ export class JuecesComponent {
       this.dimensions = data['dimensions'];
       this.items = data['items'];
       this.fit = data['fit'];
-  
+
       this.surveyForm = this.formBuilder.group({
         items: this.formBuilder.array([]), 
         nombre: this.nombreForm

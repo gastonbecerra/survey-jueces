@@ -1,28 +1,47 @@
 {    
     "information": {
-        "name": "My Survey",
-        "instructions": "xxx"
+        "name": "Actitudes sobre el big data y la datificación",
+        "about": "Estamos construyendo una escala de actitudes sobre el fenómeno del big data y la manera en que distintos aspectos de nuestro mundo material, social, y subjetivo son convertidos y tratados como datos. La escala supone 2 tipos de items, de acuedo a que incluyan sentidos positivos y negativas). Si estas dimensiones pueden ser unificadas en una única métrica es algo que estamos investigando. Los items surgen de una investigación cualitativa que identificó 4 temas: la premisa de que hay grandes volumenes de datos disponibles (ubicuidad), que podemos confiar en las instituciones y corporaciones que lo manejan (confianza) y en las promesas de que esto es positivo (optimismo), y que permite un conocimiento mejor, más preciso y menos sesgado (objetividad).",
+        "mail": "gastonbecerra@uflouniversidad.edu.ar"
     },
 
     "dimensions": [
         {
-            "dimension": "dim1",
-            "nombre": "Independiente",
-            "descripcion": "Son educandos que se caracterizan por estudiar solos a su propio ritmo. Les gusta pensar por sí mismos y confían en su capacidad de aprendizaje. Prefieren aprender el contenido que consideran que es importante. Son estudiantes seguros de sí mismos, que no tienen necesidad de consultar con los demás.  Características sobresalientes: Estudio independiente, trabajo solo, estudiar al propio ritmo, tareas que permiten pensar de forma independiente, tareas que impliquen el diseño de proyectos, cursos centrados en el estudiante antes que en el profesor."
+            "dimension": "positiva",
+            "nombre": "Positivo",
+            "descripcion": "Estos items refieren a la creencia que de que el big data puede ser útil y provechoso, que permite un conocimiento mejor.."
         }, 
 
         {
-            "dimension": "dim2",
-            "nombre": "Dependiente",
-            "descripcion": "Estos estudiantes dependen tanto del profesor, como de sus compañeros para orientarse en el estudio. Prefieren una figura de autoridad que les indique que hacer. Muestran poca curiosidad intelectual y aprenden solo lo que es requerido por el profesor. Características sobresalientes: Dependencia en el estudio de notas o resúmenes de compañeros y profesores, tareas con instrucciones y fechas de entrega claras, métodos de enseñanza centrados en el profesor, menor ambigüedad posible en todos los aspectos del curso."
+            "dimension": "negativa",
+            "nombre": "Negativo",
+            "descripcion": "Estos items refieren a la creencia de que el big data puede traer riesgos, que ponen en duda sus beneficios epistémicos, y que cuestionan a las instituciones y corporaciones que manejan el big data."
         }
+
     ],
 
     "items": [
-        "Los profesores son las personas más capacitadas para determinar qué es lo que debo saber en una materia.",
-        "Trato de participar tanto como sea posible en todas las actividades de una materia.",
-        "Los estudiantes aprendemos más cuando compartimos nuestras ideas con otros.",
-        "En la mayoría de las materias estudio para aprobar."
+        "Creo que no todo debería volverse dato",
+        "Registrar datos permite tener información objetiva",
+        "Los datos nunca son neutrales",
+        "Creo que la disponibilidad de grandes cantidades de datos sobre cualquier tema es muy positiva",
+        "La disponibilidad de grandes datos trae muchos riesgos y desafíos éticos",
+        "Creo que los grandes volúmenes de datos permitiran hacer cosas antes imposibles",
+        "Valoro que hay una gran cantidad de datos disponibles sobre nuestro mundo y sobre nosotros mismos",
+        "En todo hay datos que pueden ser explotados",
+        "No creo que tener muchos datos sobre algo sea necesariamente positivo",
+        "Creo que los datos pueden ser subjetivos y dar lugar a muchas interpretaciones",
+        "Creo que vivimos en una nueva era marcada por la disponibilidad de datos",
+        "No es cierto que vivimos rodeados de datos",
+        "Confío en las instituciones y corporaciones que generan datos",
+        "Los datos también pueden usarse de manera poco ética",
+        "No confío en las instituciones y corporaciones que juntan datos",
+        "Creo que los datos pueden ser un recurso importante",
+        "Creo que los datos pueden hablar por sí mismos",
+        "Los datos otorgan un conocimiento libre de influencias y subjetividades",
+        "Soy optimista de las posibilidades que se abren con el big data y la disponibilidad de datos masivos",
+        "Para volverse valiosos los datos deben ser interpretados y puestos en contexto",
+        "Creo que los datos son sexys e interesantes"
     ],
 
     "fit": [
@@ -33,4 +52,4 @@
         "Totalmente"
     ]   
     
-}   
+}

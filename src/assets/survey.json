@@ -2,7 +2,9 @@
     "information": {
         "name": "Actitudes sobre el big data y la datificación",
         "about": "Estamos construyendo una escala de actitudes sobre el fenómeno del big data y la manera en que distintos aspectos de nuestro mundo material, social, y subjetivo son convertidos y tratados como datos. La escala supone 2 tipos de items, de acuedo a que incluyan sentidos positivos y negativas). Si estas dimensiones pueden ser unificadas en una única métrica es algo que estamos investigando. Los items surgen de una investigación cualitativa que identificó 4 temas: la premisa de que hay grandes volumenes de datos disponibles (ubicuidad), que podemos confiar en las instituciones y corporaciones que lo manejan (confianza) y en las promesas de que esto es positivo (optimismo), y que permite un conocimiento mejor, más preciso y menos sesgado (objetividad).",
-        "mail": "gastonbecerra@uflouniversidad.edu.ar"
+        "mail": "gastonbecerra@uflouniversidad.edu.ar",
+        "team": "Equipo de investigación sobre psicología social de la Tecnología. Universidad de Buenos Aires y Universidad de Flores",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/1/14/Logo_de_la_Universidad_de_Buenos_Aires.jpg"
     },
 
     "dimensions": [

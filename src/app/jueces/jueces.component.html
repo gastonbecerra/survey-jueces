@@ -2,7 +2,7 @@
   <span>Juicio Experto - {{ information.name }}</span>
 </mat-toolbar>
 
-<mat-stepper #stepper>
+<mat-stepper #stepper orientation="vertical">
 
 <mat-step label="Bienvenida">
   <div>
@@ -15,6 +15,9 @@
       Allí <strong>deberá asignar cada item a 1 dimensión</strong>, y aclarar el nivel de adecuación (nada-totalmente).
       También podrá incluir un mensaje para el equipo de investigación, para compartir sus apreciaciones sobre el item, su redacción, o su relación con las dimensiones.</p>
     <p>¡Agradecemos de antemano su ayuda la cual resultará de suma importancia para nuestra investigación!</p>
+    <p>&nbsp;</p>
+    <img src="{{information.logo}}" *ngIf="information.logo" class="logo">
+    <p>{{ information.team }}</p>
     <p>Puede dirigir sus consultas a {{ information.mail }}</p>
     <p>&nbsp;</p>
   </div>
